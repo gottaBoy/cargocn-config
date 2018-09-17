@@ -1,7 +1,7 @@
 #加密配置
 jasypt:
   encryptor:
-    password: gottaboy
+    password: lengleng
 
 server:
   tomcat:
@@ -12,13 +12,13 @@ spring:
   redis:
     remote: false        #cachecloud 获取
     host: 127.0.0.1
-    port: 6379
+    port: 6381
     password:
   rabbitmq:
     host: 127.0.0.1
-    port: 5672
-    username: root
-    password: 88888888
+    port: 5682
+    username: pig
+    password: lengleng
   http:
     multipart:
       max-file-size: 1000MB
@@ -31,7 +31,7 @@ redis:
 ribbon:
   eager-load:
     enabled: true
-    clients: cargocn-auth,cargocn-upms-service
+    clients: pig-auth,pig-upms-service
   Httpclient:
     enabled: false
   OkHttp:
