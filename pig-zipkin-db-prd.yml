@@ -13,8 +13,8 @@ zipkin:
   collector:
     rabbitmq:
       addresses: 127.0.0.1:5682
-      password: 88888888
-      username: root
+      password: lengleng
+      username: pig
       queue: zipkin
   storage:
     type: mysql

@@ -13,18 +13,18 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
-      clients: cargocn-auth,cargocn-upms-service,cargocn-demo-service
+      clients: pig-auth,pig-upms-service,pig-demo-service
   ignoredServices: '*'
   host:
     connect-timeout-millis: 10000
     socket-timeout-millis: 10000
   ratelimit:
-    key-prefix: cargocn-ratelimite
+    key-prefix: pig-ratelimite
     enabled: true
     repository: REDIS
     behind-proxy: true
     policies:
-      cargocn-upms-service:
+      pig-upms-service:
         limit: 100
         quota: 100
         refresh-interval: 3
@@ -34,13 +34,16 @@ security:
     key: '1234567887654321' #必须16位
   validate:
     code: true
-    preview: false
+    preview: true
   sessions: stateless
   oauth2:
     client:
-      client-id: cargocn
-      client-secret: cargocn
+      client-id: pig
+      client-secret: pig
     resource:
+      loadBalanced: true
+      token-info-uri: ${security.auth.server}/oauth/check-token
+      service-id: pig-gateway
       jwt:
          key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
 
@@ -51,7 +54,7 @@ ignore:
     - /admin/code/*
     - /admin/smsCode/*
     - /admin/user/info
-    - /admin/menu/userMenu
+    - /admin/userMenu
     - /swagger-resources/**
     - /swagger-ui.html
     - /*/v2/api-docs
